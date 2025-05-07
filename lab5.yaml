@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: true
+  vars_files:
+    - vault.yml
   tasks:
     - name: Install httpd
       ansible.builtin.dnf:
