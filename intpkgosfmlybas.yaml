@@ -1,3 +1,4 @@
+#ansible all -m setup  -- add-hoc command
 ---
 - name: Install Apache based on OS family
   hosts: all
