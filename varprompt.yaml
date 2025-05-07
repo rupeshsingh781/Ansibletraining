@@ -1,0 +1,34 @@
+---
+# varprompt.yaml
+- hosts: all
+  become: true
+  vars_files:
+      - vault.yml
+  vars_prompt:
+    - name: index_file_path
+      prompt: "Enter the full path to your local index.html file"
+      private: no
+  tasks:
+    - name: Check if the provided file exists on controller
+      delegate_to: localhost
+      ansible.builtin.stat:
+        path: "{{ index_file_path }}"
+      register: file_check
+
+    - name: Copy index.html to remote server
+      ansible.builtin.copy:
+        src: "{{ index_file_path }}"
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+      when: file_check.stat.exists
+      notify: File copied
+
+    - name: Notify user if the file doesn't exist
+      ansible.builtin.debug:
+        msg: "The provided file path does not exist. Please check and re-run the playbook."
+  handlers:
+    - name: File copied
+      ansible.builtin.debug:
+        msg: "index.html was successfully copied."
