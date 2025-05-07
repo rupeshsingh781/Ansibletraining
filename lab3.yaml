@@ -1,0 +1,16 @@
+---
+- name: install package
+  hosts: remote
+  become: true
+  tasks:
+    - name: dnfinstaller
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+  - name: Copy file with owner and permissions
+    copy:  
+      src: index.html
+      dest: /root/foo.conf
+      owner: root
+      group: root
+      mode: '0644'

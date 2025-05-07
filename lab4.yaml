@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  tasks:
+    - name: Install httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+    - name: Try to copy index.html if it exists
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+      register: copy_result
+      ignore_errors: yes
+      failed_when: false
+      notify: Prompt user to place index.html
+  handlers:
+    - name: Prompt user to place index.html
+      ansible.builtin.debug:
+        msg: "index.html is missing. Please place it in the correct path on the Ansible controller."
+      when: copy_result is failed
