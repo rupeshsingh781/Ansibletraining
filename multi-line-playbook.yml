@@ -1,0 +1,21 @@
+---
+- name: Ensure multiple lines exist in a file
+  hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  gather_facts: false
+  vars:
+    config_lines:
+      - "SETTING_1=value1"
+      - "SETTING_2=value2"
+      - "SETTING_3=value3"
+ 
+  tasks:
+    - name: Ensure each config line is present
+      ansible.builtin.lineinfile:
+        path: /etc/example.conf
+        line: "{{ item }}"
+        state: present
+        create: yes
+      loop: "{{ config_lines }}"

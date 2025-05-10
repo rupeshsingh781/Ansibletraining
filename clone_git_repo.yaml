@@ -1,0 +1,33 @@
+---
+- name: Create directory and clone Git repo
+  hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  vars:
+    repo_url: git@github.com:rupeshsingh781/Ansibletraining.git
+    repo_dest: /opt/myrepo
+  tasks:
+    - name: Ensure git is installed
+      dnf:
+        name: git
+        state: present
+    - name: Ensure repo directory exists
+      file:
+        path: "{{ repo_dest }}"
+        state: directory
+        owner: "{{ ansible_user | default('student') }}"
+        mode: "0755"
+    - name: Copy SSH key to target
+      copy:
+        src: ssh/id_rsa
+        dest: /tmp/id_rsa
+        mode: "0600"
+    - name: Clone repo using SSH key
+      environment:
+        GIT_SSH_COMMAND: ssh -o StrictHostKeyChecking=no -i /tmp/id_rsa
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ repo_dest }}"
+        version: main
+        force: yes

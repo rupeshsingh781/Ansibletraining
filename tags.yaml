@@ -1,0 +1,23 @@
+---
+- name: Demo Run only one task using tags
+  hosts: all
+  become: false
+  vars_files:
+      - vault.yml
+  gather_facts: false
+  tasks:
+    - name: Task 1 - copy task1.txt
+      copy:
+        src: task1.txt
+        dest: /tmp/task1.txt
+      tags: task1
+    - name: Task 2 - copy task2.txt
+      copy:
+        src: task2.txt
+        dest: /tmp/task2.txt
+      tags: task2
+    - name: Task 3 - copy task3.txt
+      copy:
+        src: task3.txt
+        dest: /tmp/task3.txt
+      tags: task3

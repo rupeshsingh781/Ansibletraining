@@ -1,0 +1,23 @@
+---
+- name: Copy multiple files to target host
+  hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  vars:
+    files_to_copy:
+      - file1.txt
+      - file2.txt
+      - file3.conf
+    destination_dir: /tmp/
+  tasks:
+    - name: Ensure destination directory exists
+      file:
+        path: "{{ destination_dir }}"
+        state: directory
+        mode: "0755"
+    - name: Copy each file
+      copy:
+        src: "{{ item }}"
+        dest: "{{ destination_dir }}/{{ item }}"
+      loop: "{{ files_to_copy }}"
