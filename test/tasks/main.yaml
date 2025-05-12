@@ -1,0 +1,11 @@
+---
+- name: Install apache httpd
+  ansible.builtin.dnf:
+    name: httpd
+    state: present
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: files/index.html
+    dest: /var/www/html
+    owner: root
+    group: root

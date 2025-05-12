@@ -1,0 +1,59 @@
+- name: Install node_exporter based on architecture
+  hosts: remotes
+  vars_files:
+    - vault.yml
+  gather_facts: yes
+  become: yes
+  vars:
+    node_exporter_version: "1.9.1"
+  tasks:
+    - name: map the arch
+      set_fact:
+        arch_map: >-
+          {{ {
+            'x86_64': 'amd64',
+            'aarch64': 'arm64'
+          }[ansible_architecture] | default(ansible_architecture) }}
+    - name: Set download URL for node_exporter
+      set_fact:
+        download_url: >-
+          https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ arch_map }}.tar.gz
+    - name: Show which URL is being used
+      debug:
+        var: download_url
+    - name: Create download directory
+      file:
+        path: /opt/node_exporter
+        state: directory
+        mode: '0755'
+    - name: Download node_exporter
+      get_url:
+        url: "{{ download_url }}"
+        dest: /opt/node_exporter/node_exporter.tar.gz
+        mode: '0644'
+    - name: Extract node_exporter
+      unarchive:
+        src: /opt/node_exporter/node_exporter.tar.gz
+        dest: /opt/node_exporter
+        remote_src: yes
+    - name: Move binary to /usr/local/bin
+      command: mv /opt/node_exporter/node_exporter-{{ node_exporter_version }}.linux-{{ arch_map}}/node_exporter /usr/local/bin/
+      args:
+        creates: /usr/local/bin/node_exporter
+    - name: Make node_exporter executable
+      file:
+        path: /usr/local/bin/node_exporter
+        mode: '0755'
+        state: file
+      register: exporter
+    - name: Display installed 
+      debug:
+        msg: installed!!
+    - name: Verify node_exporter installation
+      command: /usr/local/bin/node_exporter --version
+      register: version_check
+      changed_when: false
+      failed_when: version_check.rc != 0
+    - name: Display node_exporter version
+      debug:
+        msg: "Node Exporter installed successfully: {{ version_check.stdout }}"
