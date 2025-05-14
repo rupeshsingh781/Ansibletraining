@@ -1,0 +1,95 @@
+---
+- name: Install Docker based on OS family
+  hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  vars:
+    docker_packages_redhat:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    docker_packages_debian:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    docker_repo_url_redhat: https://download.docker.com/linux/centos/docker-ce.repo
+    docker_repo_url_debian: https://download.docker.com/linux/ubuntu
+    docker_repo_key_url_debian: https://download.docker.com/linux/ubuntu/gpg
+  tasks:
+    - name: Install prerequisites on RedHat
+      dnf:
+        name: dnf-plugins-core
+        state: present
+      when: ansible_os_family == "RedHat"
+    - name: Add Docker CE repo on RedHat
+      get_url:
+        url: "{{ docker_repo_url_redhat }}"
+        dest: /etc/yum.repos.d/docker-ce.repo
+      when: ansible_os_family == "RedHat"
+      notify: Restart Docker
+    - name: Install Docker packages on RedHat
+      dnf:
+        name: "{{ docker_packages_redhat }}"
+        state: present
+      when: ansible_os_family == "RedHat"
+      notify: Restart Docker
+    - name: Install prerequisites on Debian
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Add Docker GPG key on Debian
+      apt_key:
+        url: "{{ docker_repo_key_url_debian }}"
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Add Docker repository on Debian
+      apt_repository:
+        repo: "deb [arch=amd64] {{ docker_repo_url_debian }} {{ ansible_lsb.codename }} stable"
+        state: present
+      when: ansible_os_family == "Debian"
+      notify: Restart Docker
+
+    - name: Install Docker packages on Debian
+      apt:
+        name: "{{ docker_packages_debian }}"
+        state: present
+      when: ansible_os_family == "Debian"
+      notify: Restart Docker
+
+    - name: Enable and start Docker service
+      systemd:
+        name: docker
+        enabled: true
+        state: started
+
+  handlers:
+    - name: Restart Docker
+      systemd:
+        name: docker
+        state: restarted
+  tasks:
+   - name: Check Docker is installed
+     command: docker --version
+     register: docker_version
+     ignore_errors: yes
+   - name: Print Docker version
+     debug:
+       var: docker_version.stdout
+   - name: Get list of running Docker containers
+     command: |
+      
+       docker ps --format "{{ '{{.Names}}\t{{.Status}}\t{{.Image}}' }}"
+     register: docker_ps_output
+     changed_when: false
+   - name: Display container status

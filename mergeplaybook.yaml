@@ -1,0 +1,16 @@
+---
+- name: merge two playbook 
+  hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  gather_facts: false
+  tasks:
+    - debug:
+        msg: "Merge palybook osfamilydocker"
+    - import_playbook: osfamilydocker.yaml
+    - debug:
+        msg: "Starting playbook helthcheck"
+    - import_playbook: displayhealth.yaml
+    - debug:
+        msg: "Finished all the  playbook"

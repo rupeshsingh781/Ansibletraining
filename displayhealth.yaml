@@ -1,0 +1,18 @@
+    - name: Check Docker is installed
+      command: docker --version
+      register: docker_version
+      ignore_errors: yes
+
+    - name: Print Docker version
+      debug:
+        var: docker_version.stdout
+
+    - name: Get list of running Docker containers
+      command: >
+        docker ps --format "{{ '{{.Names}}\t{{.Status}}\t{{.Image}}' }}"
+      register: docker_ps_output
+      changed_when: false
+
+    - name: Display container status
+      debug:
+        var: docker_ps_output.stdout_lines
