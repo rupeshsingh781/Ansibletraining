@@ -1,0 +1,761 @@
+    1  install from EPEL
+    2  yum update
+    3  yum install epel-release
+    4  yum -y install xrdp tigervnc-server
+    5  systemctl enable xrdp
+    6  systemctl restart xrdp
+    7  firewall-cmd --add-port=3389/tcp --permanent
+    8  firewall-cmd --reload
+    9  yum install ansible
+   10  exit
+   11  mkdir ansiblecode
+   12  cd ansiblecode/
+   13  vi inventory.ini
+   14  ansible -i inventory.ini all -m ping 
+   15  ssh-keygen -t rsa
+   16  ssh-copy-id student@10.0.16.56
+   17  ssh student@10.0.16.56
+   18  ansible -i inventory.ini all -m ping
+   19  vi inventory.ini
+   20  ansible -i inventory.ini all -m ping
+   21  vi /etc/ansible/ansible.cfg
+   22  ansible all -m ping
+   23  vi inventory.yaml
+   24  ansible -i inventory.yaml all -m ping
+   25  vi inventory.yaml
+   26  ansible -i inventory.yaml all -m ping
+   27  ifconfig
+   28  git --version
+   29  git init
+   30  git status
+   31  git add .
+   32  git commit -m "this is initial setup"
+   33  ls -lrt
+   34  cd ..
+   35  ls -lrt
+   36  cd ansiblecode/
+   37  xit
+   38  exit
+   39  git --version
+   40  git config --global user.name "Rupesh Singh"
+   41  git config --global user.email "rupesh@abc.com"
+   42  git config --global --list
+   43  cd ansible
+   44  cd ansiblecode/
+   45  git status
+   46  git init 
+   47  ls -lrt
+   48  ls -al
+   49  git status
+   50  touch git_lab
+   51  git status
+   52  git add .
+   53  git staus
+   54  git status
+   55  git commit -m "this all git lab test"
+   56  git status
+   57  git log
+   58  ls -la
+   59  cd .git
+   60  ls -lrt
+   61  cd ..
+   62  cat /root/.ssh/id_rsa
+   63  cat /root/.ssh/id_rsa.pub 
+   64  git push origin main
+   65  git branch -M main
+   66  git remote add origin git@github.com:amitopenwriteup/gittraining.git
+   67  git push -u origin main
+   68  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+   69  git branch -M main
+   70  git push -u origin main
+   71  git remote remove origin git@github.com:amitopenwriteup/gitt
+   72  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+   73  git push -u origin main
+   74  git remote remove origin git@github.com:amitopenwriteup/gittraining.git
+   75  git remote remove origin gittraining.git
+   76  git remote remove  gittraining.git
+   77  git remote remove  git@github.com:amitopenwriteup/gittraining.git
+   78  ls -lrt
+   79  git remote rm  git@github.com:amitopenwriteup/gittraining.git
+   80  git remote rm origin  git@github.com:amitopenwriteup/gittraining.git
+   81  git remote remove origin  git@github.com:amitopenwriteup/gittraining.git
+   82  git push -u origin main
+   83  git remote rm origin 
+   84  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+   85  git branch -M main
+   86  git push -u origin main
+   87  ls -lrt
+   88  clear
+   89  vi lab.yml
+   90  ansible-playbook  -i inventory.ini lab.yaml
+   91  ansible-playbook  -i inventory.ini lab.yml
+   92  git commit -m "add yml file"
+   93  git status
+   94  git push origin main
+   95  git status
+   96  git add .
+   97  git commit -m "add yml file" 
+   98  git push origin main
+   99  git status
+  100  vi fileexist.yaml
+  101  ansible-playbook -i inventory.ini fileexist.yaml 
+  102  vi fileexist.yaml
+  103  ansible-playbook -i inventory.ini fileexist.yaml 
+  104  ansible-playbook  -i inventory.ini fileexist.yaml --ask-vault-pass 
+  105  vi fileexist.yaml
+  106  ansible-playbook  -i inventory.ini fileexist.yaml --ask-vault-pass 
+  107  vi varpromts.yaml
+  108  ansible-playbook -i inventory.ini  varprompt.yaml --ask-vault-pass
+  109  ansible-playbook -i inventory.ini  varprompts.yaml --ask-vault-pass
+  110  ansible-playbook -i inventory.ini  varpromts.yaml --ask-vault-pass
+  111  cp varpromts.yaml varprompt.yaml
+  112  ansible-playbook -i inventory.ini  varprompt.yaml --ask-vault-pass
+  113  rm varprompt.yaml
+  114  ansible-playbook -i inventory.ini  varprompt.yaml --ask-vault-pass
+  115  mv varpromts.yaml varprompt.yaml
+  116  ls -lrt
+  117  git commit -m "add yml file3" 
+  118  git commit -m "add new yml file" 
+  119  git push origin main
+  120  ansible all -m setup 
+  121  ansible all -m setup >> gatheringinfo.txt
+  122  vi gatherfact.yaml
+  123  ansible-playbook -i inventory.ini gatherfact.yaml --ask-vault-pass
+  124  vi intpkgosfmlybas.yaml
+  125  ansible-playbook -i inventory.ini intpkgosfmlybas.yaml --ask-vault-pass
+  126  vi intpkgosfmlybas.yaml
+  127  git add .
+  128  git commit -m "add yml file" 
+  129  git push origin main
+  130  git status
+  131  cd ansiblecode/
+  132  ll
+  133  cat lb.yml
+  134  cat lab.yml 
+  135  vi inventory2.ini
+  136  vi lab2.yaml
+  137  ansible-playbook -i inventory.ini lab2.yaml
+  138  vi inventory2.ini
+  139  ansible-playbook -i inventory.ini lab2.yaml
+  140  vi inventory2.ini
+  141  ll
+  142  cat inventory.ini 
+  143  vi inventory2.ini
+  144  ifconfig 
+  145  cat inventory.ini 
+  146  vi inventory.ini 
+  147  vi inventory2.ini
+  148  ssh student@10.0.16.59
+  149  ssh-keygen -t rsa
+  150  ssh-copy-id student@10.0.16.59
+  151  ls -lrt
+  152  ansible-playbook -i inventory.ini lab2.yaml
+  153  ifconfig
+  154  ansible-playbook -i inventory2.ini lab2.yaml
+  155  touch index.html
+  156  vi assignment.yaml
+  157  vi lab2.yaml
+  158  vi lab4.yaml
+  159  ls -lrt
+  160  rm index.html
+  161  ansible-playbook -i inventory.ini lab4.yaml
+  162  vi inventory.ini 
+  163  ansible-playbook -i inventory2.ini lab4.yaml
+  164  ls -lrt
+  165  cat lab4.yaml 
+  166  cat lab3.yaml 
+  167  vi lab3.yaml
+  168  ansible-vault create vault.yml
+  169  vi inventory.ini 
+  170  ls -lrt
+  171  cat inventory2.ini 
+  172  vi inventory2.ini 
+  173  vi inventory.ini 
+  174  clear
+  175  cat inventory.ini 
+  176  vi lab4.yaml 
+  177  ansible-playbook -i inventory.ini lab.yaml --ask-vault-pass
+  178  ansible-playbook -i inventory.ini lab4.yaml --ask-vault-pass
+  179  git add .
+  180  git commit -m "add new files" 
+  181  git status
+  182  git push origin main
+  183  ssh student@10.0.16.59
+  184  cat inventory.ini 
+  185  vi inventory.ini 
+  186  ansible-playbook -i inventory.ini lab4.yaml --ask-vault-pass
+  187  vi lab4.yaml 
+  188  cp lab4.yaml lab5.yaml
+  189  vi lab4.yaml 
+  190  git push origin main
+  191  git add .
+  192  git commit -m "file update" 
+  193  git push origin main
+  194  clear
+  195  vi fileexist.yaml
+  196  vi lab4.yaml 
+  197  vi lab5.yaml 
+  198  cd ans
+  199  vi copy-files.yaml 
+  200  ansible-playbook -i inventory copy-files.yaml --ask-vault-pass
+  201  ansible-playbook -i inventory.ini copy-files.yaml --ask-vault-pass
+  202  cd /tmp
+  203  ls -lrt
+  204  rm -rf file1.txt file2.txt file3.conf
+  205  ls -lrt
+  206  cd /root/
+  207  cd /root/ansiblecode/
+  208  ll
+  209  rm -rf file3.conf 
+  210  touch file1.txt file2.txt file3.conf
+  211  echo "File 1 content" > file1.txt
+  212  echo "File 2 content" > file2.txt
+  213  echo "Config=123" > file3.conf
+  214  ansible-playbook -i inventory.ini copy-files.yaml --ask-vault-pass
+  215  cd ansiblecode/
+  216  ll
+  217  vi cleanup.yaml
+  218  ansible-playbook  -i inventory.ini cleanup.yaml --ask-vault-pass
+  219  cat varprompt.yaml 
+  220  vi cleanup.yaml
+  221  ansible-playbook  -i inventory.ini cleanup.yaml --ask-vault-pass
+  222  cd /tmp
+  223  ll
+  224  ls -lrt
+  225  cd /root/ansiblecode/
+  226  ll
+  227  cat cleanup.yaml 
+  228  vi copy-files.yaml
+  229  touch file1.txt file2.txt file3.conf
+  230  echo "File 1 content" > file1.txt
+  231  echo "File 2 content" > file2.txt
+  232  echo "Config=123" > file3.conf
+  233  cd /tmp
+  234  touch file1.txt file2.txt file3.conf
+  235  echo "Config=123" > file3.conf
+  236  echo "File 2 content" > file2.txt
+  237  echo "File 1 content" > file1.txt
+  238  ls -lrt
+  239  cd /root/ansiblecode/
+  240  ll
+  241  rm file1.txt
+  242  rm file2.txt file3.txt
+  243  ls -lrt
+  244  ansible-playbook -i inventory copy-files.yaml
+  245  vi copy-files.yaml
+  246  ansible-playbook -i inventory copy-files.yaml
+  247  vi copy-files.yaml
+  248  ll
+  249  cat lab5.yaml 
+  250  vi copy-files.yaml :wq!
+  251  cat lab5.yaml 
+  252  ls -lrt /opt/ | grep *repo*
+  253  cd /opt
+  254  ls
+  255  ls -lrt /opt
+  256  cd myrepo/
+  257  ll
+  258  git config --system --add safe.directory /opt/myrepo
+  259  cd /root/ansiblecode/
+  260  cd ansiblecode/
+  261  ll
+  262  ls -l /tmp/file*
+  263  cat /tmp/file1.txt
+  264  vi lineinfile
+  265  vi lineinfile.yaml
+  266  vi inventory.ini
+  267  vi lineinfile.yaml
+  268  ansible-playbook -i inventory.ini lineinfile.yaml --ask-vault-pass
+  269  vi lineinfile.yaml
+  270  ansible-playbook -i inventory.ini lineinfile.yaml --ask-vault-pass
+  271  vi multi-line-playbook.yml
+  272  ansible-playbook -i inventory.ini multi-line-playbook.yml --ask-vault-pass
+  273  cd /etc
+  274  ls -lrt
+  275  cat example.conf 
+  276  ls
+  277  ls | grep repo
+  278  mkdir ssh
+  279  cd /root/ansiblecode/
+  280  mkdir ssh
+  281  cp ~/.ssh/id_rsa ssh/id_rsa
+  282  chmod 600 ssh/id_rsa
+  283  vi clone_git_repo.yaml
+  284  ls -l /opt | grep *repo*
+  285  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  286  vi clone_git_repo.yaml
+  287  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  288  vi clone_git_repo.yaml
+  289  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  290  vi clone_git_repo.yaml
+  291  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  292  vi clone_git_repo.yaml
+  293  rm clone_git_repo.yaml 
+  294  vi clone_git_repo.yaml
+  295  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  296  vi clone_git_repo.yaml
+  297  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  298  vi clone_git_repo.yaml
+  299  ansible-playbook -i inventory.ini clone_git_repo.yaml --ask-vault-pass
+  300  vlear
+  301  clear
+  302  vi tags.yaml
+  303  touch task1.txt task2.txt task3.txt
+  304  echo "Task 1 file" > task1.txt
+  305  echo "Task 2 file" > task2.txt
+  306  echo "Task 3 file" > task3.txt
+  307  echo "Task 2 file" > task2.txt
+  308  vi tags.yaml
+  309  ansible-playbook -i inventory.ini  run-one-task.yaml --tags task2 --ask-vault-pass
+  310  ansible-playbook -i inventory.ini  tags.yaml --tags task2 --ask-vault-pass
+  311  cd /tmp
+  312  ll
+  313  ls -lrt
+  314  ansible-playbook -i inventory.ini  tags.yaml --tags task3 --ask-vault-pass
+  315  cd /root/ansiblecode/
+  316  ansible-playbook -i inventory.ini  tags.yaml --tags task3 --ask-vault-pass
+  317  vi Install_node_exporter.yaml
+  318  ansible-playbook -i inventory.ini Install_node_exporter.yaml --ask-vault-pass
+  319  vi Install_node_exporter.yaml
+  320  ansible-playbook -i inventory.ini Install_node_exporter.yaml --ask-vault-pass
+  321  git add .
+  322  cd /ansi
+  323  cd ansiblecode/
+  324  git add .
+  325  history | grep -i git
+  326  git commit -m "add new files"
+  327  git push origin main
+  328  ls -lrt
+  329  git add Install_node_exporter.yaml
+  330  git add tags.yaml clone_git_repo.yaml multi-line-playbook.yml lineinfile.yaml intpkgosfmlybas.yaml gatherfact.yaml gatheringinfo.txt varprompt.yaml
+  331  history | grep -i git
+  332  git commit -m "new updated files" 
+  333  it status
+  334  git status
+  335  ls -lrt
+  336  clear
+  337  ls -lrt
+  338  vi instl_nod_exporter_arch_based.yaml
+  339  history 
+  340  ansible-playbook -i inventory.ini instl_nod_exporter_arch_based.yaml --ask-vault-pass
+  341  vi instl_nod_exporter_arch_based.yaml
+  342  ansible-playbook -i inventory.ini instl_nod_exporter_arch_based.yaml --ask-vault-pass
+  343  vi instl_nod_exporter_arch_based.yaml
+  344  vim instl_nod_exporter_arch_based.yaml
+  345  ansible-playbook -i inventory.ini instl_nod_exporter_arch_based.yaml --ask-vault-pass
+  346  vim instl_nod_exporter_arch_based.yaml
+  347  ansible-playbook -i inventory.ini instl_nod_exporter_arch_based.yaml --ask-vault-pass
+  348  vim instl_nod_exporter_arch_based.yaml
+  349  ansible-playbook -i inventory.ini instl_nod_exporter_arch_based.yaml --ask-vault-pass
+  350  ansible-galaxy role init test
+  351  ls -lrt
+  352  cd test/
+  353  ls -lrt
+  354  cd task
+  355  cd tasks/
+  356  pwd
+  357  vi main.yaml
+  358  cd files
+  359  cd ../files/
+  360  touch index.html
+  361  cd ..
+  362  vi roletest.yaml
+  363  ansible-playbook -i inventory.ini roletest.yaml --ask-vault-pass
+  364  cd
+  365  cd /tmp
+  366  vi git_files.txt
+  367  cd /root/ansiblecode/
+  368  ls -lrt
+  369  cat intpkgosfmlybas.yaml
+  370  cd  .././
+  371  cd .
+  372  cd ..
+  373  clear
+  374  ls -lrt
+  375  cat install_docker.yaml 
+  376  ll
+  377  ls -lrt
+  378  cd ansiblecode/
+  379  clear
+  380  vi displayhealth.yaml
+  381  ansible-playbook -i inventory.ini displayhealth.yaml --ask-vault-pass
+  382  vi displayhealth.yaml
+  383  ansible-playbook -i inventory.ini displayhealth.yaml --ask-vault-pass
+  384    ls -lrt
+  385  cat roletest.yaml 
+  386  cd /test
+  387  cd test
+  388  ll
+  389  cd tasks
+  390  ls -lrt
+  391  cat main.yaml 
+  392  cd ../files/
+  393  ll
+  394  cd ..
+  395  vi mergeplaybook.yaml
+  396  ansible-playbook -i inventory.ini mergeplaybook.yaml  --ask-vault-pass
+  397  vi mergeplaybook.yaml
+  398  ls -lrt
+  399  vi install_docker_osfmly.yaml
+  400  cp install_docker_osfmly.yaml install_docker_helthmerge.yaml
+  401  vi install_docker_helthmerge.yaml
+  402  ansible-playbook -i inventory.ini install_docker_helthmerge.yaml  --ask-vault-pass
+  403  vi displayhealth.yaml
+  404  ansible-playbook -i inventory.ini install_docker_helthmerge.yaml  --ask-vault-pass
+  405  vi displayhealth.yaml
+  406  ansible-playbook -i inventory.ini install_docker_helthmerge.yaml  --ask-vault-pass
+  407  vi install_docker_helthmerge.yaml
+  408  ansible-playbook -i inventory.ini install_docker_helthmerge.yaml  --ask-vault-pass
+  409  cat inventory.ini 
+  410  cat inventory.yaml 
+  411  cat inventory2.ini 
+  412  :q!
+  413  clear
+  414  cd test
+  415  ls -lrt
+  416  history | grep role
+  417  cd 
+  418  cd ansiblecode/
+  419  ansible-galaxy role init displayhealth
+  420  cd displayhealth/
+  421  ls -lrt
+  422  cd tasks/
+  423  vi main.yaml
+  424  vi docker_install.yml
+  425  vi get_docker_status.yml
+  426  cd ../vars/
+  427  ls -lrt
+  428  vi main.yml
+  429  cd ../defaults/
+  430  ll'
+  431  ll
+  432  vi main.yml
+  433  cd ../handlers/
+  434  vi main.yml 
+  435  cd ../meta
+  436  vi main.yml 
+  437  cd ..
+  438  cd displayhealth/
+  439  git init
+  440  ls -lrt
+  441  git add .
+  442  git commit -m "update docker installation "
+  443  git remote add origin git@github.com:rupeshsingh781/dockerinstallrole.git
+  444  git branch -M main
+  445  git push -u origin main
+  446  ansible-galaxy import rupeshsingh781 dockerinstallrole --token f83b0ac303f5360ccf87b7c6a0f6a25682ba5a5b
+  447  cd ..
+  448  ls -lrt
+  449  vi displayhealth.yaml 
+  450  mv roletest.yaml displaydockerrole.yaml
+  451  vi displaydockerrole.yaml 
+  452  ansible-playbook -i inventory.ini displaydockerrole.yaml --key-vault-pass
+  453  ansible-playbook -i inventory.ini displaydockerrole.yaml --ask-vault-pass
+  454  cd displayhealth/
+  455  ll
+  456  cd tasks
+  457  ls -l
+  458  mv main.yml main1.yml
+  459  mv main.yaml main.yml
+  460  ansible-playbook -i inventory.ini displaydockerrole.yaml --key-vault-pass
+  461  ansible-playbook -i inventory.ini displaydockerrole.yaml --ask-vault-pass
+  462  cd ..
+  463  ansible-playbook -i inventory.ini displaydockerrole.yaml --ask-vault-pass
+  464  cd displayhealth/
+  465  git push -u origin main
+  466  git pull -u origin main
+  467  ll
+  468  git init
+  469  git add .
+  470  git commit -m "docker publish"
+  471  git branch -M main
+  472  git remote add origin git@github.com:rupeshsingh781/dockerinstallrole.git
+  473  git push -u origin main
+  474  ansible-galaxy import rupeshsingh781 dockerinstallrole --token f83b0ac303f5360ccf87b7c6a0f6a25682ba5a5b
+  475  ls -lrt
+  476  vi db_create.yaml 
+  477  cat db_create.yaml 
+  478  cd ansiblecode/
+  479  git init 
+  480  git add .
+  481  git commit -m " my first git repo"
+  482  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+  483  git branch -M main
+  484  git push -u origin main
+  485  git commit -m " my first git repo"
+  486  ls -lrt
+  487  mv ssh /tmp/
+  488  ls -lrt
+  489  git init 
+  490  git add .
+  491  git commit -m " my first git repo"
+  492  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+  493  git branch -M main
+  494  git push -u origin main
+  495  mv /tmp/ssh .
+  496  git add .
+  497  git commit -m " my updated repo"
+  498  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+  499  git branch -M main
+  500  git push -u origin main
+  501  vi db_create.yaml
+  502  ls -lrt
+  503  cat install_docker_helthmerge.yaml 
+  504  ansible-playbook -i inventory.ini db_create.yaml --ask-vault-pass
+  505  ssh student@10.0.16.59
+  506  ansible-playbook -i inventory.ini db_create.yaml --ask-vault-pass
+  507  ssh student@10.0.16.59
+  508  ls -lrt
+  509  vi db_create.yaml 
+  510  ansible-playbook -i inventory.ini db_create.yaml --ask-vault-pass
+  511  vi db_create.yaml 
+  512  ansible-playbook -i inventory.ini db_create.yaml --ask-vault-pass
+  513  vi db_create.yaml 
+  514  ansible-playbook -i inventory.ini db_create.yaml --ask-vault-pass
+  515  vi db_create.yaml 
+  516  ansible-playbook -i inventory.ini db_create.yaml --ask-vault-pass
+  517  ansible-galaxy role init mariadb
+  518  cd mariadb/
+  519  ls -lrt
+  520  cd vars
+  521  vi main.yml 
+  522  cd tasks
+  523  cd ../tasks
+  524  vi main.yml 
+  525  cd meta
+  526  cd ../meta/
+  527  ls -lrt
+  528  vi main.yml 
+  529  cd ..
+  530  ls -lrt
+  531  vi displaydockerrole.yaml 
+  532  cp displaydockerrole.yaml role_display.yaml
+  533  ansible-playbook -i inventory.ini role_display.yaml --ask-vault-pass
+  534  ansible-galaxy role install bsmeding.docker
+  535  ls -lrt
+  536  cd /root/.ansible/roles/bsmeding.docker/
+  537  ls -lrt
+  538  cd handlers
+  539  ls -lrt
+  540  cd ..
+  541  cd /root/ansiblecode/
+  542  ls -lrt
+  543  cd mariadb/
+  544  ls -lrt
+  545  git init
+  546  git commit -m "MAriadb"
+  547  git remote add origin git@github.com:rupeshsingh781/mariadb.git
+  548  git branch -M main
+  549  git push -u origin main
+  550  git remote add origin git@github.com:rupeshsingh781/mariadb.git
+  551  git branch -M main
+  552  git push -u origin main
+  553  git init .
+  554  git add .
+  555  git commit -m "MAriadb"
+  556  git remote add origin git@github.com:rupeshsingh781/mariadb.git
+  557  git branch -M main
+  558  git push -u origin main
+  559  git init
+  560  git add .
+  561  git commit -m "maria db "
+  562  git remote add origin git@github.com:rupeshsingh781/maria_db.git
+  563  git branch -M main
+  564  git push -u origin main
+  565  git init
+  566  git add .
+  567  git commit -m "maria db "
+  568  git remote add origin git@github.com:rupeshsingh781/maria_db.git
+  569  git branch -M main
+  570  git push -u origin main
+  571  cd ..
+  572  git add .
+  573  git commit -m " updated_05_14 "
+  574  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+  575  git branch -M main
+  576  git push -u origin main
+  577  cd /root/ansiblecode/
+  578  git push -u origin main
+  579  git add .
+  580  git commit -m " updated_05_15_Morning "
+  581  git remote add origin git@github.com:rupeshsingh781/Ansibletraining.git
+  582  git branch -M main
+  583  git push -u origin main
+  584  ls -lrt
+  585  cd mariadb/
+  586  ls -lrt
+  587  cd handler
+  588  cd handlers/
+  589  ls -lrt
+  590  cd ..
+  591  ls -lrt
+  592  cd test
+  593  ls -lrt
+  594  cd handlers/
+  595  ll
+  596  cat main.yml 
+  597  cd .././
+  598  cd ..
+  599  cd mariadb/
+  600  cd handlers/
+  601  vi main.yml 
+  602  cd /root/ansiblecode/
+  603  ansible-playbook -i inventory.ini role_display.yaml --ask-vault-pass
+  604  vi role_display.yaml 
+  605  cd mariadb/
+  606  cd handlers/
+  607  vi main.yml 
+  608  ansible-playbook -i inventory.ini role_display.yaml --ask-vault-pass
+  609  cd /root/ansiblecode/
+  610  ansible-playbook -i inventory.ini role_display.yaml --ask-vault-pass
+  611  cd mariadb/
+  612  cd handlers/
+  613  vi main.yml 
+  614  cd /root/ansiblecode/
+  615  ansible-galaxy collection install community.docker
+  616  ls -lrt
+  617  cd /root/.ansible/collections/ansible_collections
+  618  ls -lrt
+  619  cd community.docker-4.6.0.info/
+  620  ll
+  621  cat GALAXY.yml 
+  622  cd /root/ansiblecode/
+  623  vi community.docker.yaml
+  624  ansible-playbook -i inventory.ini community.docker.yaml --ask-vault-pass
+  625  docker --version
+  626  ansible-galaxy collection install community.postgresql
+  627  cd mariadb/
+  628  ll
+  629  cd ..
+  630  ls -lrt
+  631  cd mariadb/
+  632  ls -lrt
+  633  cat tasks/main.yml 
+  634  cd ..
+  635  cd /root/.ansible/
+  636  ll
+  637  cd collections/
+  638  ls -lrt
+  639  cd ansible_collections/
+  640  ls -lrt
+  641  cd community.postgresql-4.0.0.info/
+  642  ls -lrt
+  643  cd ..
+  644  cd community
+  645  ll
+  646  cd postgresql/
+  647  ls -lrt
+  648  ls
+  649  systemctl status postgresql.services
+  650  cd /root/ansiblecode/
+  651  cd mariadb/
+  652  ls -lrt
+  653  cd meta/
+  654  ll
+  655  cd ..
+  656  vi deploy_postgresql.yaml
+  657  clear
+  658  ls -lrt
+  659  cat community.docker.yaml 
+  660  lear
+  661  clear
+  662  ls -lrt
+  663  vi postgresql.yaml
+  664  ansible-playbook -i inventory.ini postgresql.yaml --ask-vault-pass
+  665  vi postgresql.yaml
+  666  ansible-playbook -i inventory.ini postgresql.yaml --ask-vault-pass
+  667  systemctl status postgresql.services
+  668  vi postgresql.yaml
+  669  ps -ef 
+  670  ps -ef  | grep -i postgresql
+  671  clear
+  672  systemctl status postgresql.services
+  673  ansible-playbook -i inventory.ini postgresql.yaml --ask-vault-pass
+  674  systemctl status postgresql
+  675  ps -ef | grep -i postgresql
+  676  ps -ef | grep -i pmon
+  677  clear
+  678  vi postgresql.yaml
+  679  clear
+  680  ansible-inventory --list --inventory inventory.ini
+  681  ansible-inventory --inventory inventory.ini --graph
+  682  ansible-doc copy
+  683  ansible-doc -l
+  684  ansible-config
+  685  ansible-config dump --only-changed
+  686  ansible-console -i inventory.ini --extra-vars "@vault.yml" --ask-vault-pass
+  687  ansible remotes -i inventory.ini -m yum -a "name=httpd state=present" -b --extra-vars "@vault.yml" --ask-vault-pass
+  688  ansible all -m ping -i inventory.ini --extra-vars "@vault.yml" --ask-vault-pass
+  689  ansible all -i inventory.ini -m yum -a "name=mariadb-server state=present" --extra-vars "@vault.yaml"  --ask-vault-pass
+  690  ansible all -i inventory.ini -m yum -a "name=mariadb-server state=present" --extra-vars "@vault.yml"  --ask-vault-pass
+  691  ansible all -i inventory.ini -m service -a "name=mariadb state=started enabled=yes" --extra-vars "@vault.yaml"  --ask-vault-pass
+  692  ansible all -i inventory.ini -m service -a "name=mariadb state=started enabled=yes" --extra-vars "@vault.yml"  --ask-vault-pass
+  693  ansible all -i inventory.ini -a "iptables -F" --extra-vars "@vault.yml"  --ask-vault-pass
+  694  ansible all -i inventory.ini -a "iptables -A INPUT -s 192.168.60.0/24 -p tcp -m tcp --dport 3306 -j ACCEPT" --extra-vars "@vault.yml"  --ask-vault-pass
+  695  ansible remotes -i inventory.ini -a "service ntpd status" --extra-vars "@vault.yml"  --ask-vault-pass
+  696  ansible remotes -i inventory.ini -m copy -a "src=/etc/hosts dest=/tmp/hosts" -b --extra-vars "@vault.yml" --ask-vault-pass
+  697  mkdir files
+  698  vi files/index.html
+  699  vi deploy_website.yaml
+  700  ansible-galaxy collection install community.docker
+  701  vi deploy_website.yaml 
+  702  ansible-playbook -i inventory.ini deploy_website.yaml --ask-vault-pass
+  703  vi deploy_website.yaml 
+  704  docker ps 
+  705  vi deploy_website.yaml 
+  706  vi mariadb/tasks/main.yml 
+  707  clear
+  708  cd ansiblecode/
+  709  ls -lrt
+  710  mkdir -p files/certs
+  711  openssl req -x509 -nodes -days 365 -newkey rsa:2048  -keyout files/certs/nginx.key -out files/certs/nginx.crt -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=localhost
+  712  clear
+  713  cd files/
+  714  ls -lrty
+  715  ls -lrt
+  716  cd certs/
+  717  ll
+  718        openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  719           -keyout files/certs/nginx.key \
+  720           -out files/certs/nginx.crt \
+  721           -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=localhost
+  722  ls -lrt
+  723  cd ..
+  724  ll
+  725  vi nginx.conf`
+  726  vi nginx.conf
+  727  cd ..
+  728  cd files/
+  729  cd ..
+  730  vi deploy_website_tls.yaml
+  731  ansible-playbook -i inventory.ini deploy_website_tls.yaml --ask-vault-pass
+  732  vi deploy_website_tls.yaml
+  733  ansible-playbook -i inventory.ini deploy_website_tls.yaml --ask-vault-pass
+  734  vi deploy_website_tls.yaml
+  735  mkdir templates
+  736  cd templates/
+  737  vi sudoers.j2
+  738  vi sudoers.yaml
+  739  cd ..
+  740  ls -lrt
+  741  vi deploy_website.yaml 
+  742  cp deploy_website.yaml deploy_website_tls_docker.yaml
+  743  vi deploy_website_tls_docker.yaml 
+  744  ansible-playbook -i inventory.ini deploy_website_tls_docker.yaml --ask-vault-pass
+  745  vi deploy_website_tls_docker.yaml 
+  746  ls -lrt
+  747  ansible-galaxy collection init rsing.centos_hardening
+  748  ls -lrt
+  749  cd rsing/
+  750  ls 0lrt
+  751  ls -lrt
+  752  cd centos_hardening/
+  753  ls -lrt
+  754  exit
+  755  vi deploy_website_tls.yaml 
+  756  cat deploy_website_tls.yaml 
+  757  cat deploy_website.yaml 
+  758  exit
+  759  cd ansiblecode/
+  760  ls -lrt
+  761  history >> command.text

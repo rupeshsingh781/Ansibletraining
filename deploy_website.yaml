@@ -1,0 +1,44 @@
+---
+- name: Deploy and validate a website using Docker NGINX
+  hosts: remotes
+  become: yes
+  vars_files:
+    - vault.yml
+  vars:
+    website_path: /opt/website
+    site_url: http://localhost:81
+    test_file_path: /tmp/test-index.html
+    expected_text: Hello from Ansible
+  tasks:
+    - name: Create website directory
+      file:
+        path: "{{ website_path }}"
+        state: directory
+        mode: "0755"
+    - name: Copy website files to remote host
+      copy:
+        src: files/index.html
+        dest: "{{ website_path }}/index.html"
+    - name: Run NGINX container with mounted website directory
+      community.docker.docker_container:
+        name: nginx-site
+        image: nginx
+        state: started
+        restart_policy: always
+        ports:
+          - 81:80
+        volumes:
+          - "{{ website_path }}:/usr/share/nginx/html:ro"
+    - name: Wait for NGINX to be available on port 81
+      wait_for:
+        port: 81
+        timeout: 30
+    - name: Fetch the index page
+      get_url:
+        url: "{{ site_url }}"
+        dest: "{{ test_file_path }}"
+        force: yes
+    - name: Display success message
+      debug:
+        msg: Website deployed and validated successfully!
+

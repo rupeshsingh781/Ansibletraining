@@ -1,0 +1,1 @@
+{{ user }}    {{ hosts | default('ALL') }}=({{ runas | default('ALL') }}) {{ nopasswd | default('') }}: {{ commands | join(', ') }}

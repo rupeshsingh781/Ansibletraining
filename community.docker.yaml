@@ -1,0 +1,28 @@
+---
+- name: Deploy PostgreSQL using Docker collection
+  hosts: all
+  become: true
+  vars_files:
+    - vault.yml
+  tasks:
+    - name: Create a Docker volume for PostgreSQL data
+      community.docker.docker_volume:
+        name: pgdata
+    - name: Pull the official PostgreSQL image
+      community.docker.docker_image:
+        name: postgres
+        source: pull
+    - name: Run PostgreSQL container
+      community.docker.docker_container:
+        name: postgres
+        image: postgres
+        state: started
+        restart_policy: always
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_USER: myuser
+          POSTGRES_DB: mydb
+        volumes:
+          - pgdata:/var/lib/postgresql/data

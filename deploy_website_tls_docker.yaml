@@ -1,0 +1,45 @@
+---
+- name: Deploy and validate a website using Docker NGINX
+  hosts: remotes
+  become: yes
+  vars_files:
+    - vault.yml
+  vars:
+    website_path: /opt/website
+    site_url: http://localhost:81
+    test_file_path: /tmp/test-index.html
+    expected_text: Hello from Ansible
+  tasks:
+    - name: Create website directory
+      file:
+        path: "{{ website_path }}"
+        state: directory
+        mode: "0755"
+    - name: Copy website files to remote host
+      copy:
+        src: files/index.html
+        dest: "{{ website_path }}/index.html"
+    - name: Copy TLS certificates to remote host
+      copy:
+        src: files/certs/
+        dest: "{{ website_path }}/certs/"
+        mode: "0600"
+    - name: Copy custom NGINX configuration to remote host
+      copy:
+        src: files/nginx.conf
+        dest: "{{ website_path }}/nginx.conf"
+    - name: Run NGINX container with mounted website directory and TLS
+      community.docker.docker_container:
+        name: nginx-site
+        image: nginx
+        state: started
+        restart_policy: always
+        ports:
+          - 443:443
+        volumes:
+          - "{{ website_path }}:/usr/share/nginx/html:ro"
+          - "{{ website_path }}/certs:/etc/nginx/certs:ro"
+          - "{{ website_path }}/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
+    - name: Display success message
+      debug:
+        msg: Website with HTTPS deployed and validated successfully!

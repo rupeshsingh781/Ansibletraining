@@ -1,0 +1,19 @@
+---
+- name: Configure sudoers for a user
+  hosts: remotes
+  become: true
+  vars_files:
+    - vault.yaml
+  tasks:
+    - name: j2
+      template:
+        src: sudoers.j2
+        dest: /etc/sudoers
+      vars:
+        user: student
+        hosts: ALL
+        runas: ALL
+        nopasswd: NOPASSWD
+        commands:
+          - ALL
+

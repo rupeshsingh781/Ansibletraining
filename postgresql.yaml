@@ -1,0 +1,28 @@
+---
+- name: Simulate PostgreSQL setup on CentOS
+  hosts: all
+  vars_files:
+    - vault.yml
+  become: yes
+  vars:
+    postgres_root_password: RootPass123!
+    db_name: testdb
+    db_user: dbuser
+    db_user_password: UserPass123!
+  tasks:
+    - name: Ensure required packages are installed
+      yum:
+        name:
+          - postgresql-server
+          - postgresql-contrib
+        state: present
+    - name: Initialize PostgreSQL database
+      command: /usr/bin/postgresql-setup --initdb
+      args:
+        creates: /var/lib/pgsql/data/PG_VERSION
+    - name: Start and enable PostgreSQL service
+      service:
+        name: postgresql
+        state: started
+        enabled: true
+
